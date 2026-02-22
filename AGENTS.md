@@ -1,0 +1,26 @@
+This file provides guidance to AI coding agents when working with code in this repository.
+
+## Architecture
+
+```
+gdrive/                    → Google Drive export skill
+gmail/                     → Gmail interaction skill
+karpathy-guidelines/       → LLM coding guidelines skill
+setup-project-for-agent/   → Project onboarding skill
+```
+
+## Skills
+
+| Skill | Description |
+|-------|-------------|
+| `gdrive` | Export Google Docs as Markdown directly from the Drive API using Application Default Credentials |
+| `gmail` | Read, search, send, and reply to Gmail messages using the Gmail API and Application Default Credentials. Use when the user asks about email, inbox, unread messages, or wants to send/reply to someone |
+| `karpathy-guidelines` | Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria |
+| `setup-project-for-agent` | Set up a local project's directory structure for AI agent use — AGENTS.md, skill symlinks, and Claude Code integration. Use when onboarding a new project or standardizing an existing one for AI agent workflows |
+
+## Conventions
+
+- **Commits:** Never mention `Co-Authored-By`.
+- **Atomic Commits:** Break work into logical commits — not too granular. A single commit can span multiple files if they serve one purpose.
+- **Stability:** Ensure the repository state is valid and runnable after each commit. Do not leave the repo in a broken state between commits.
+- **Messages:** Use clear, descriptive commit messages.
