@@ -56,10 +56,8 @@ the user that no global skills were found.
 For **each** skill directory found in `~/.agent/skills/`:
 1. **Document** — Read the `name` and `description` fields from the skill's
    `SKILL.md` YAML frontmatter. Add a row to the **Skills** table in
-   `AGENTS.md` with the skill name and a short description. Do NOT include
-   file paths for every skill  but mention it's a global skill — the agent discovers them automatically.
-
-AGENTS.md need to state that global skills resolved via ~/.agent/skills/, unless already stated otherwise.
+   `AGENTS.md` with the skill name, its `~/.agent/skills/<skill-name>/`
+   path, and a short description.
 
 ## Phase 4 — Verify
 
