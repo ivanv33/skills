@@ -2,9 +2,8 @@
 name: setup-project-for-agent
 description: >
   Set up a local project's directory structure for AI agent use —
-  AGENTS.md, skill symlinks, and AI Agent integration. Use when
-  onboarding a new project or standardizing an existing one for AI agent
-  workflows.
+  AGENTS.md, skills. Use when onboarding a new project or
+  standardizing an existing one for AI agent workflows.
 disable-model-invocation: true
 ---
 
@@ -52,14 +51,15 @@ Global skills live in `~/.agent/skills/`. Each subdirectory there that
 contains a `SKILL.md` is a skill eligible for linking.
 
 If `~/.agent/skills/` does not exist or is empty, skip this phase and inform
-the user that no global skills were found.
+the user that no global skills were found. 
 
 For **each** skill directory found in `~/.agent/skills/`:
-
 1. **Document** — Read the `name` and `description` fields from the skill's
    `SKILL.md` YAML frontmatter. Add a row to the **Skills** table in
    `AGENTS.md` with the skill name and a short description. Do NOT include
-   file paths but mention it's a global skill — the agent discovers them automatically.
+   file paths for every skill  but mention it's a global skill — the agent discovers them automatically.
+
+AGENTS.md need to state that global skills resolved via ~/.agent/skills/, unless already stated otherwise.
 
 ## Phase 4 — Verify
 
