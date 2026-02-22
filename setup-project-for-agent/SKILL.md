@@ -2,7 +2,7 @@
 name: setup-project-for-agent
 description: >
   Set up a local project's directory structure for AI agent use —
-  AGENTS.md, skill symlinks, and Claude Code integration. Use when
+  AGENTS.md, skill symlinks, and AI Agent integration. Use when
   onboarding a new project or standardizing an existing one for AI agent
   workflows.
 disable-model-invocation: true
@@ -44,7 +44,7 @@ symlink so that Claude Code discovers it automatically.
    `../.agent/skills`. If it already exists and points elsewhere, warn the
    user rather than overwriting.
 
-## Phase 3 — Global skill symlinks
+## Phase 3 — Global skill installation
 
 > **Skip this entire phase if the project is itself a skills collection.**
 
@@ -56,16 +56,10 @@ the user that no global skills were found.
 
 For **each** skill directory found in `~/.agent/skills/`:
 
-1. **Symlink** — Create a relative symlink inside the project:
-   `<project>/.agent/skills/<skill-name>` → `~/.agent/skills/<skill-name>`.
-   Skip if a local skill or symlink with that name already exists.
-2. **Gitignore** — Append `<skill-name>/` to
-   `<project>/.agent/skills/.gitignore` if not already listed. Create the
-   `.gitignore` file if it does not exist.
-3. **Document** — Read the `name` and `description` fields from the skill's
+1. **Document** — Read the `name` and `description` fields from the skill's
    `SKILL.md` YAML frontmatter. Add a row to the **Skills** table in
    `AGENTS.md` with the skill name and a short description. Do NOT include
-   file paths — the agent discovers them automatically.
+   file paths but mention it's a global skill — the agent discovers them automatically.
 
 ## Phase 4 — Verify
 
@@ -73,7 +67,7 @@ After all phases, confirm the setup by listing:
 
 - Whether AGENTS.md was created or already existed
 - Whether CLAUDE.md symlink was created or already existed
-- Which global skills were linked (if any)
+- Which global skills were added to the **Skills** table (if any)
 - Any warnings or conflicts encountered
 
 Present this as a brief summary to the user.
