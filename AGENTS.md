@@ -18,6 +18,10 @@ setup-project-for-agent/   → Project onboarding skill
 | `karpathy-guidelines` | Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria |
 | `setup-project-for-agent` | Set up a local project's directory structure for AI agent use — AGENTS.md, skill symlinks, and Claude Code integration. Use when onboarding a new project or standardizing an existing one for AI agent workflows |
 
+## Skill Design
+
+Skills are symlinked into consuming projects, so each skill must be **independent, self-contained, and portable**. A skill directory should work correctly regardless of where it is linked from — no references to sibling skills or paths outside its own directory. The one shared location is `~/.agent/`, which is accessible to all agents and skills, but must not be abused; use it only for cross-cutting concerns like credentials or shared config, not as a dumping ground.
+
 ## Conventions
 
 - **Commits:** Never mention `Co-Authored-By`.
