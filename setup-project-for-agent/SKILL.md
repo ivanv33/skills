@@ -31,17 +31,33 @@ symlink so that Claude Code discovers it automatically.
    If `CLAUDE.md` already exists as a regular file, leave it alone and note
    the conflict to the user.
 
-## Phase 2 — Directory structure
+## Phase 2 — Directory structure and Claude settings
 
-> **Skip this entire phase if the project is itself a skills collection**
+> **Skip directory/symlink steps if the project is itself a skills collection**
 > (i.e. skill directories live at the project root rather than under
 > `.agent/skills/`).
 
+### Step 1 — Directories and symlinks
+
 1. Ensure `.agent/skills/` exists.
-2. Ensure `.claude/` exists.
-3. Ensure `.claude/skills` is a **relative symlink** pointing to
+2. Ensure `.agent/plans/` exists.
+3. Ensure `.claude/` exists.
+4. Ensure `.claude/skills` is a **relative symlink** pointing to
    `../.agent/skills`. If it already exists and points elsewhere, warn the
    user rather than overwriting.
+
+### Step 2 — Claude settings
+
+Ensure `.claude/settings.json` exists and contains:
+
+```json
+{
+  "plansDirectory": ".agent/plans/"
+}
+```
+
+If the file already exists, add the `plansDirectory` key only if it is not
+already set. Do not remove or overwrite existing keys.
 
 ## Phase 3 — Global skill installation
 
@@ -65,12 +81,66 @@ After all phases, confirm the setup by listing:
 
 - Whether AGENTS.md was created or already existed
 - Whether CLAUDE.md symlink was created or already existed
+- Which directories were created (`.agent/skills/`, `.agent/plans/`, `.claude/`)
+- Whether `.claude/settings.json` was created or merged, and which keys were adopted
 - Which global skills were added to the **Skills** table (if any)
 - Any warnings or conflicts encountered
 
 Present this as a brief summary to the user.
 
-## Phase 5 — Terminal Shift+Enter for new lines
+## Phase 5 — VS Code workspace adoption
+
+If the **invoking workspace** (the directory where the agent session is running)
+contains a `.vscode/` directory, offer to adopt its editor configuration for the
+target project.
+
+> **Skip this phase** if source and target are the same directory, or if the
+> source has no `.vscode/`.
+
+### Step 1 — Offer adoption
+
+List the `.vscode/` files found in the source workspace (e.g. `settings.json`,
+`extensions.json`, `launch.json`, `tasks.json`, `*.code-snippets`, scripts like
+`open-in-ide`) and ask the user whether they want to adopt them for the target
+project. The user may accept all, pick individual files, or decline entirely.
+
+If the user declines, skip to Step 4.
+
+### Step 2 — Copy or merge
+
+- **Target has no `.vscode/`** — Copy the selected files into a new `.vscode/`
+  directory.
+- **Target already has `.vscode/`** — For each file present in both:
+  - Parse both JSON files and present a side-by-side summary of conflicting
+    keys, showing source value vs target value.
+  - Ask the user which keys to keep (source, target, or both where the values
+    are mergeable — e.g. arrays can be concatenated and deduplicated, objects
+    can be deep-merged).
+  - For files only in source, copy them over.
+  - For files only in target, leave them untouched.
+
+### Step 3 — Install dependencies from `.vscode/` files
+
+Scan the copied/merged `.vscode/` files and offer to install anything they
+reference that is not already present:
+
+| Source | What to detect | Install action |
+|--------|---------------|----------------|
+| `settings.json` | Font families in `editor.fontFamily` and `terminal.integrated.fontFamily` | Check if each font is installed (`fc-list` on Linux, `system_profiler SPFontsDataType` or `fc-list` on macOS). Offer to install missing fonts via Homebrew (`brew install --cask font-<name>`) or the system package manager. |
+| `extensions.json` | Extension IDs in `recommendations` | Run `codium --list-extensions` / `code --list-extensions` (detect from Phase 6 Step 1) and diff against recommendations. Offer to install missing extensions via `--install-extension`. |
+| `settings.json` | Any executable paths in `terminal.integrated.env.*`, custom scripts in `.vscode/` | Check if referenced executables exist. Flag any that are missing. |
+
+Only install what the user approves.
+
+### Step 4 — Report
+
+Include in the Phase 4 verification summary:
+- Whether `.vscode/` was adopted, merged, or skipped
+- Which extensions were installed or skipped
+- Which fonts were installed or flagged as missing
+- Any conflicts the user resolved
+
+## Phase 6 — Terminal Shift+Enter for new lines
 
 Configure Shift+Enter to insert a new line in the editor's integrated terminal
 instead of executing the command. Requires changes in two places: the editor
