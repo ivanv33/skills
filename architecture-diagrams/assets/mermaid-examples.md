@@ -101,13 +101,12 @@ sequenceDiagram
     Note over W,D: Audience: payments on-call. Question: what happens when the provider times out?<br/>Solid = request, dashed = reply, idempotency key = order_id
     W->>D: mark refund PENDING [SQL]
     W->>P: POST /refunds (Idempotency-Key: order_id) [HTTPS]
-    P--xW: timeout after 5 s
+    P--xW: timeout 5 s
     loop up to 3 retries, exponential backoff
         W->>P: POST /refunds (same Idempotency-Key)
-        P-->>W: 200 refund already processed
+        P-->>W: 200 refund re_123 (replayed)
     end
     W->>D: mark refund COMPLETE
-    W-->>P: (no further calls)
 ```
 
 ## State machine
@@ -147,7 +146,7 @@ flowchart TB
     end
     api1 -->|"reads/writes [SQL]"| db1
     api2 -->|"reads/writes [SQL]"| db1
-    db1 -.->|"replicates to [sync]"| db2
+    db1 -.->|"replicates to [PostgreSQL streaming]"| db2
     api1 -.->|"publishes to"| kafka
     api2 -.->|"publishes to"| kafka
 
