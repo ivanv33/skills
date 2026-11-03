@@ -1,0 +1,12 @@
+schema_version: "1.1"
+name: pushback-on-too-many-diagrams
+expected_outcome: |
+  rate-limiting-diagrams.md pushes back on the six-diagram request: it explains that a
+  single-service change needs roughly one to three diagrams, delivers a Container diagram
+  (gateway, the new Redis-backed token-bucket filter marked as proposed, Redis, upstream
+  services, clients) and a sequence diagram for a request that is throttled (including the
+  Redis-unavailable fail-open/fail-closed decision), and explicitly declines or
+  de-prioritises the class diagram and ER diagram with reasons (hand-drawn code-level
+  diagrams rot; there is no new schema). It may offer the deployment diagram only if it
+  shows something infrastructure-relevant such as Redis failure domains. Diagrams have
+  titles, legends and labelled arrows with protocols.
