@@ -1,0 +1,12 @@
+# Diagrams for distributed, microservice and cloud-native systems
+
+These systems produce the worst "everything" diagrams. Patterns that keep them readable (C4 microservices guidance, C4 deployment diagrams, arc42 section 7, *Software Architect's Handbook* ch. 8 and 12):
+
+1. **Pick a boundary perspective and state it.** If one team owns all the services, model each microservice as a *container* inside your system. If services are owned by different teams, model each as a *software system* and show only your team's internals. C4's microservices guidance makes exactly this distinction.
+2. **Show service boundaries with data ownership.** Draw each service *together with its own datastore* (as a container pair or grouped box). A shared database across services should be visibly shared, which makes it easy to challenge in review.
+3. **Model async messaging explicitly.** Show the topic/queue as its own element (C4 "queues and topics" guidance) or label the arrow with the topic: "publishes OrderPlaced to [Kafka: orders.v1]". Use dashed lines for async, and put delivery semantics (at-least-once, ordering key) in prose.
+4. **Use dynamic diagrams for cross-service flows.** Container diagrams in microservice systems become spaghetti if every interaction is drawn. Show the *relationships* on the container diagram and the *flows* (saga, choreography, compensation) on numbered dynamic/sequence diagrams.
+5. **Filter, don't cram.** Draw one container diagram per bounded context or per scenario rather than one diagram of 60 services. If you use Structurizr, generate filtered views from a single model.
+6. **Deployment and failure domains.** In the deployment diagram, nest nodes: cloud region → availability zone → cluster/node pool → container instances. Show replica counts and which managed services are regional vs zonal. Mark failure domains as boundaries, and pair the diagram with a "what happens when X fails" table in prose. arc42 recommends a building-block-to-infrastructure mapping alongside the diagram.
+7. **Keep cross-cutting infrastructure off the main diagrams.** Service mesh, observability stack and CI/CD belong in a separate deployment or platform view, or in arc42 section 8 (crosscutting concepts), unless they are the subject of the design.
+8. **Communicate to multiple teams through the same model.** Architecture documentation serves many stakeholders. Use the Context view for product and leadership, Container and Dynamic views for engineers, and the Deployment view for SRE/platform teams.

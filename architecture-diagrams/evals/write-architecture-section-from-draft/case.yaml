@@ -1,0 +1,12 @@
+schema_version: "1.1"
+name: write-architecture-section-from-draft
+expected_outcome: |
+  notifications-design.md contains a completed Architecture section with a small number
+  of Mermaid diagrams (a C4 Context or Container diagram plus at least one sequence
+  diagram for the send/delivery flow including the retry/failure path). Each diagram has
+  a title stating type and scope, a legend, typed elements with technology, verb-labelled
+  arrows with protocols, async flows distinguished from sync, and accompanying prose with
+  quality-attribute scenarios, a decision/alternatives block and a diagram-maintenance line.
+  The diagrams parse as valid Mermaid.
+context:
+  scaffold_script: place-files.sh

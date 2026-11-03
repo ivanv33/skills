@@ -3,6 +3,7 @@ This file provides guidance to AI coding agents when working with code in this r
 ## Architecture
 
 ```
+architecture-diagrams/     → Architecture diagrams for design docs skill
 gdrive/                    → Google Drive export skill
 gmail/                     → Gmail interaction skill
 karpathy-guidelines/       → LLM coding guidelines skill
@@ -13,6 +14,8 @@ setup-project-for-agent/   → Project onboarding skill
 
 | Skill | Description |
 |-------|-------------|
+| `architecture-diagrams` | Team standard for architecture diagrams in design docs: choose the few diagrams a design needs (C4 Context/Container, sequence, deployment, state), draw them as Mermaid or Structurizr source with titles, legends and labelled arrows, write the prose that carries rationale and quality attributes, and review existing diagrams against a checklist |
+| `architecture-diagrams` | Team standard for architecture diagrams in design docs: choose the few diagrams a design needs (C4 Context/Container, sequence, deployment, state), draw them as Mermaid or Structurizr source with titles, legends and labelled arrows, write the prose that carries rationale and quality attributes, and review existing diagrams against a checklist |
 | `gdrive` | Export Google Docs as Markdown directly from the Drive API using Application Default Credentials |
 | `gmail` | Read, search, send, and reply to Gmail messages using the Gmail API and Application Default Credentials. Use when the user asks about email, inbox, unread messages, or wants to send/reply to someone |
 | `karpathy-guidelines` | Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria |

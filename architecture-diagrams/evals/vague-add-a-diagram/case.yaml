@@ -1,0 +1,12 @@
+schema_version: "1.1"
+name: vague-add-a-diagram
+expected_outcome: |
+  The updated doc adds a small number of diagrams (ideally a Container diagram and one
+  sequence diagram for the incremental index path, including the out-of-order / stale-write
+  case) rather than one everything-diagram or a pile of six. Each diagram has a title with
+  type and scope, a legend, the new search-indexer and dead-letter queue visibly marked as
+  proposed, verb-labelled arrows with protocols, async RabbitMQ flow distinguished from
+  sync REST/HTTP calls, and a short walkthrough paragraph beside it. The original text is
+  preserved and the diagrams are valid Mermaid.
+context:
+  scaffold_script: place-files.sh
