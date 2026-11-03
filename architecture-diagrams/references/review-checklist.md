@@ -3,10 +3,11 @@
 ## Two-minute review checklist (author self-check or reviewer)
 - [ ] Caption states the **audience and the question** this diagram answers.
 - [ ] **Title** includes diagram type and scope; status (current/proposed) is clear.
-- [ ] **Legend** present and explains every colour, shape, line style and arrowhead.
+- [ ] **5-second test**: subject, new parts and the one question are visible at a glance.
+- [ ] **Legend** present whenever the diagram uses colour, line styles, borders, icons or non-default shapes to mean something, and it explains every one of them; absent only when there is nothing to explain.
 - [ ] **One abstraction level**; elements all at the same C4 level.
 - [ ] Every element has **name, type, responsibility** and **technology** where applicable.
-- [ ] Every arrow has a **verb label** matching its direction, plus **protocol** for inter-process calls.
+- [ ] Every arrow has a **verb label** matching its direction, with no bare arrows, plus **protocol** for inter-process calls including queues and replication.
 - [ ] **Async vs sync** is distinguishable.
 - [ ] Names are **consistent** with other diagrams, the prose and the code.
 - [ ] **≤ ~15 elements**, readable at normal zoom, understandable in greyscale.
@@ -15,7 +16,7 @@
 - [ ] **Source is committed** (or linked) and editable by someone other than the author; owner named.
 
 ## Top anti-patterns to reject in review
-1. **No legend.** The reader has to guess what colours and dashed lines mean.
+1. **Unexplained conventions.** Colours, dashed lines or borders that mean something, with no legend to say what. (A plain diagram with no conventions doesn't need one.)
 2. **Mixed abstraction levels.** Services, classes, servers and teams on one canvas.
 3. **Unlabelled or "uses" arrows.** Relationships with no intent, direction or protocol.
 4. **The "everything" diagram.** Fifty boxes trying to answer every question at once; split it by question.

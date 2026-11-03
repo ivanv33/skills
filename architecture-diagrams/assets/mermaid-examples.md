@@ -1,6 +1,6 @@
 # Mermaid starter snippets
 
-Each snippet already carries a title, a legend, typed elements and verb-labelled arrows with protocols. Copy, rename, and delete what you don't need. Mermaid has no native legend, so the legend is a small subgraph (structural diagrams) or a `Note` (sequence diagrams); keep it.
+Each snippet already carries a title, a legend, typed elements and verb-labelled arrows with protocols. Copy, rename, and delete what you don't need. Mermaid has no native legend, so the legend is a small subgraph (structural diagrams) or a `Note` (sequence diagrams). Keep it whenever the diagram uses colour, dashed lines or dashed borders to mean something; drop it from a plain sequence diagram that uses only ordinary request and reply lines.
 
 Syntax gotchas (verified with mermaid-cli 11): sequence-diagram participant aliases cannot contain square brackets, and semicolons inside labels or notes are read as statement separators, so use parentheses and commas there.
 

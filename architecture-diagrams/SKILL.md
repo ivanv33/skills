@@ -21,11 +21,11 @@ Scale the output to the request. A bare "add a diagram to this doc" wants one or
 
 1. **One diagram, one question, one audience.** If you can't write the question in the caption, don't draw the diagram.
 2. **Start at the top.** Context first, then containers; go deeper only where the design decision actually lives. Most teams never need C4 level 3 or 4.
-3. **Title + legend + labelled arrows, always.** No exceptions for "obvious" diagrams. Readers shouldn't need the author in the room.
+3. **Title and labelled arrows, always; a legend whenever the picture uses a convention.** Every arrow carries a verb. A legend is required the moment a diagram uses colour, dashed lines, dashed borders, icons or non-default shapes to mean something; a plain sequence diagram or a flowchart with uniform boxes and solid arrows can skip it, and should, because an empty legend is noise. Readers shouldn't need the author in the room either way.
 4. **Never mix abstraction levels** on one canvas: services and classes, or servers and teams, don't share a diagram.
 5. **Show structure *and* behaviour.** One box diagram plus one sequence diagram for the critical path beats five box diagrams.
 6. **Prose carries the reasoning.** Rationale, rejected alternatives and quality-attribute trade-offs go in the text beside the diagram, not in the picture.
-7. **Sketch, don't blueprint.** Design-doc diagrams communicate selected aspects; they are not complete specifications. Roughly 5–15 elements per diagram.
+7. **Pass the 5-second test.** A reader from the stated audience should get the diagram's main point in about five seconds: what the subject is, what is new, and the one question it answers. That caps a diagram at roughly 5–15 elements and forces the most important path to be visually dominant. Sketch, don't blueprint: design-doc diagrams communicate selected aspects; they are not complete specifications.
 8. **Diagrams live with the code and die when they lie.** Commit the source, review it in PRs, name an owner, delete what no longer matches reality.
 
 ## Workflow
@@ -67,7 +67,7 @@ Never deliver a diagram as a screenshot or a description of a picture with no ed
 Full checklist in `references/notation-rules.md`. The ones that are most often broken:
 
 - Title states **type and scope** ("Container diagram: Checkout system (proposed)").
-- A **legend** explains every shape, colour, line style and arrowhead, even for UML.
+- A **legend** explains every shape, colour, line style and arrowhead the diagram uses to carry meaning. Skip it only when there is nothing to explain: no colour, no dashed lines or borders, no icons, default shapes. Never skip it on a diagram that distinguishes proposed from existing or async from sync.
 - Every element has **name, type, responsibility, technology** ("Order Service [Container: Go, gRPC] – validates and persists orders").
 - Every arrow has a **verb label** that reads as a sentence in the arrow's direction, plus a **protocol** on inter-process calls. "Uses" is not a label. Queue, topic and replication arrows are inter-process too: "publishes RefundRequested to [AMQP]", "replicates to [Redis async replication]", not just a verb.
 - **Arrows show the initiating interaction or data flow**, not code dependency, unless the legend says otherwise. One arrow per request/response.
@@ -84,7 +84,7 @@ Use `assets/architecture-section-template.md` as the skeleton for the whole Arch
 
 ### 7. Review before handing over
 
-Run the checklist in `references/review-checklist.md` on your own output, or on the user's diagrams when reviewing. Reject the anti-patterns it lists: no legend, mixed levels, "uses" arrows, the everything-diagram, a diagram with no prose, private notation, screenshot-only, stale-but-current, structure without behaviour, hand-drawn code-level diagrams.
+Apply the 5-second test first: cover the prose, look at the diagram, and ask whether someone from the stated audience would name its subject, its new parts and its question in five seconds. If not, cut elements or split it before checking anything else. Then run the checklist in `references/review-checklist.md` on your own output, or on the user's diagrams when reviewing. Reject the anti-patterns it lists: no legend, mixed levels, "uses" arrows, the everything-diagram, a diagram with no prose, private notation, screenshot-only, stale-but-current, structure without behaviour, hand-drawn code-level diagrams.
 
 When reviewing someone else's diagram, lead with the one or two problems that most hurt a reader, quote the checklist item, and show the fixed source rather than describing the fix.
 
