@@ -7,7 +7,7 @@
 - [ ] **Legend** present whenever the diagram uses colour, line styles, borders, icons or non-default shapes to mean something, and it explains every one of them; absent only when there is nothing to explain.
 - [ ] **One abstraction level**; elements all at the same C4 level.
 - [ ] Every element has **name, type, responsibility** and **technology** where applicable.
-- [ ] Every arrow has a **verb label** matching its direction, with no bare arrows, plus **protocol** for inter-process calls including queues and replication.
+- [ ] Arrows that need explaining have a **short verb label** (a few words plus protocol) matching their direction; boundary-crossing, async and sensitive-data arrows are never bare; no label runs to a sentence.
 - [ ] **Async vs sync** is distinguishable.
 - [ ] Names are **consistent** with other diagrams, the prose and the code.
 - [ ] **≤ ~15 elements**, readable at normal zoom, understandable in greyscale.
@@ -18,7 +18,7 @@
 ## Top anti-patterns to reject in review
 1. **Unexplained conventions.** Colours, dashed lines or borders that mean something, with no legend to say what. (A plain diagram with no conventions doesn't need one.)
 2. **Mixed abstraction levels.** Services, classes, servers and teams on one canvas.
-3. **Unlabelled or "uses" arrows.** Relationships with no intent, direction or protocol.
+3. **Unlabelled or "uses" arrows where it matters, or labels that are paragraphs.** Boundary-crossing or ambiguous relationships with no intent, direction or protocol; or labels so long the diagram reads like prose.
 4. **The "everything" diagram.** Fifty boxes trying to answer every question at once; split it by question.
 5. **Diagram with no prose.** A picture with no walkthrough, no rationale and no quality attributes.
 6. **Private notation.** Shapes and icons only the author can decode, or vendor icons without labels.

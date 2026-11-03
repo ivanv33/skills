@@ -17,7 +17,8 @@ These rules synthesize Simon Brown's C4 review checklist (c4model.com) and the *
 - [ ] **Shapes carry meaning only if the legend says so.** Default: rectangles for everything, cylinders for data stores, person shapes for people.
 
 ## Relationships (lines)
-- [ ] **Every arrow has a label** describing intent with a verb ("publishes OrderPlaced events to", "reads customer profile from"), not "uses". No bare arrows anywhere, including on deployment diagrams, replication links and queue edges. In a sequence diagram the message text is the label; every message line needs one.
+- [ ] **Arrows are labelled where the relationship isn't self-evident**, with a verb ("publishes OrderPlaced to", "reads customer profile from"), not "uses". Every arrow that crosses a system or trust boundary, carries async messages or sensitive data, or could be read two ways gets a label; an obvious link between adjacent elements may stay bare. In a sequence diagram the message text is the label.
+- [ ] **Labels are short:** two to five words plus a bracketed protocol tag. A label that needs a clause or a second line is detail that belongs in the prose or element catalog.
 - [ ] **The label matches the arrow direction.** Read it aloud as a sentence: source → verb → target.
 - [ ] **Protocol or technology** is on inter-process arrows (HTTPS/JSON, gRPC, Kafka topic, SQL).
 - [ ] **One arrow per relationship.** Don't draw a return arrow for request/response; show two only if either side can initiate.
