@@ -1,0 +1,11 @@
+schema_version: "1.1"
+name: choose-diagrams-for-small-change
+expected_outcome: |
+  refunds-rfc-architecture.md explains that a change of this size needs only two or three
+  diagrams (a Container diagram showing checkout-api, the new worker as proposed, RabbitMQ
+  and Stripe, plus a sequence diagram for the refund flow with the Stripe timeout and
+  idempotency-key retry path) and explicitly says what not to draw (no component/class
+  diagrams, no deployment diagram since infrastructure does not change). The drafted
+  Mermaid diagrams have titles, legends, labelled arrows with protocols, async
+  distinguished from sync, and the new worker visually marked as proposed. Prose names
+  the idempotency/retry tactic and gives a quality-attribute scenario for the timeout.

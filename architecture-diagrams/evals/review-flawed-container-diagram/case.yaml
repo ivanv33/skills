@@ -1,0 +1,13 @@
+schema_version: "1.1"
+name: review-flawed-container-diagram
+expected_outcome: |
+  review.md identifies, in priority order, the concrete defects: no title or legend,
+  mixed abstraction levels (a Java class and a DTO alongside services, a k8s cluster and
+  a team), unlabelled arrows with no verbs or protocols, a redundant return arrow,
+  observability (Datadog) cluttering the diagram, async (Kafka) not distinguished from
+  sync, proposed elements (Reconciler) only marked by an unexplained colour, and no
+  prose covering rationale or the nightly drift scenario. It proposes a corrected
+  Container diagram in Mermaid source and recommends a sequence diagram for the
+  reconciliation flow.
+context:
+  scaffold_script: place-files.sh

@@ -24,3 +24,5 @@ venv/
 .pytest_cache/
 .coverage
 htmlcov/
+# skill-creator eval workspaces (local run artifacts)
+*-workspace/
