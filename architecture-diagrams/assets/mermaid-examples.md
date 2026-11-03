@@ -71,7 +71,9 @@ flowchart TB
         l1["Existing container"]
         l2["Proposed (new in this design)"]
         l3["External system"]
-        l1 ~~~ l2 ~~~ l3
+        l4[("Data store")]
+        l5[["Queue / topic"]]
+        l1 ~~~ l2 ~~~ l3 ~~~ l4 ~~~ l5
     end
 
     classDef existing fill:#dbe9ff,stroke:#1f4e99,color:#000
@@ -82,7 +84,7 @@ flowchart TB
     class psp,l3 ext
 ```
 
-Legend text should also state: "solid arrow = synchronous call in the direction of the initiator; dashed arrow = asynchronous message."
+Legend text should also state: "solid arrow = synchronous call in the direction of the initiator; dashed arrow = asynchronous message." Every shape the diagram uses (cylinder for data stores, double-bracket for queues) gets a legend entry, as above.
 
 ## Sequence diagram (one scenario, including the failure path)
 
