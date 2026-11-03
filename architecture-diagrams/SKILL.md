@@ -15,7 +15,7 @@ Draw a **small set of diagrams, each built to answer one question for a named au
 - Reviewing a design doc or a pasted diagram for quality.
 - Deciding which diagrams (and how many) a design needs.
 
-If the user only wants a quick throwaway sketch to think with, draw it and skip the ceremony, but say which rules you skipped. The rigour below is for diagrams that will be read by others and kept.
+Scale the output to the request. A bare "add a diagram to this doc" wants one or two diagrams, each with a title, legend and a short walkthrough paragraph, and nothing else bolted on; the quality-attribute scenarios, decision records and maintenance line in steps 6 and 8 belong in a full Architecture section, not in every answer. If the user only wants a quick throwaway sketch to think with, draw it and skip the ceremony, but say which rules you skipped. The full rigour below is for an Architecture section that will be read by others and kept.
 
 ## The eight rules that matter most
 
@@ -69,7 +69,7 @@ Full checklist in `references/notation-rules.md`. The ones that are most often b
 - Title states **type and scope** ("Container diagram: Checkout system (proposed)").
 - A **legend** explains every shape, colour, line style and arrowhead, even for UML.
 - Every element has **name, type, responsibility, technology** ("Order Service [Container: Go, gRPC] – validates and persists orders").
-- Every arrow has a **verb label** that reads as a sentence in the arrow's direction, plus a **protocol** on inter-process calls. "Uses" is not a label.
+- Every arrow has a **verb label** that reads as a sentence in the arrow's direction, plus a **protocol** on inter-process calls. "Uses" is not a label. Queue, topic and replication arrows are inter-process too: "publishes RefundRequested to [AMQP]", "replicates to [Redis async replication]", not just a verb.
 - **Arrows show the initiating interaction or data flow**, not code dependency, unless the legend says otherwise. One arrow per request/response.
 - **Async is visually distinct** (dashed) and named in the legend.
 - **Proposed vs existing is distinguishable** (dashed border or colour, in the legend).
@@ -78,7 +78,7 @@ Full checklist in `references/notation-rules.md`. The ones that are most often b
 
 ### 6. Write the prose beside each diagram
 
-Each diagram gets a 2–5 sentence walkthrough, the quality attributes it addresses, the key decision and the alternatives rejected. Write quality attributes as scenarios, not adjectives: *"When [stimulus] under [environment], [artifact] shall [response] within [measure]."* Name the tactic used (retry with idempotency key, active redundancy, caching). `references/quality-attributes-and-rationale.md` has the scenario format, the decision-record format and where each attribute belongs on which diagram.
+When writing a full Architecture section, each diagram gets a 2–5 sentence walkthrough, the quality attributes it addresses, the key decision and the alternatives rejected. When the user asked only for a diagram, the walkthrough alone is enough. Write quality attributes as scenarios, not adjectives: *"When [stimulus] under [environment], [artifact] shall [response] within [measure]."* Name the tactic used (retry with idempotency key, active redundancy, caching). `references/quality-attributes-and-rationale.md` has the scenario format, the decision-record format and where each attribute belongs on which diagram.
 
 Use `assets/architecture-section-template.md` as the skeleton for the whole Architecture section: it has slots for context, structure, runtime scenarios, deployment, quality attributes, decisions and diagram maintenance. Fill it rather than inventing a layout.
 

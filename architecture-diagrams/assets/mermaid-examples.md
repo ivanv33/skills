@@ -8,6 +8,7 @@ Conventions used throughout:
 - Solid arrow `-->` = synchronous call, initiated by the source.
 - Dashed arrow `-.->` = asynchronous message or event.
 - Dashed border (`stroke-dasharray`) = proposed / new in this design.
+- In **sequence diagrams** Mermaid itself draws replies dashed (`-->>`), so "dashed = async" does not hold there. State the sequence-diagram convention separately in its note: solid = request, dashed = reply, `-)` = async fire-and-forget message.
 - Grey fill = external or existing, out of scope for the change.
 
 ## System Context (C4 level 1) as a flowchart
@@ -95,7 +96,7 @@ sequenceDiagram
     participant P as Payment Provider (External)
     participant D as Orders DB (Container)
 
-    Note over W,D: Audience: payments on-call. Question: what happens when the provider times out?<br/>Solid = sync call, dashed = async, idempotency key = order_id
+    Note over W,D: Audience: payments on-call. Question: what happens when the provider times out?<br/>Solid = request, dashed = reply, idempotency key = order_id
     W->>D: mark refund PENDING [SQL]
     W->>P: POST /refunds (Idempotency-Key: order_id) [HTTPS]
     P--xW: timeout after 5 s
