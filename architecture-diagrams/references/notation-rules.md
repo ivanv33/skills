@@ -4,7 +4,8 @@ These rules synthesize Simon Brown's C4 review checklist (c4model.com) and the *
 
 ## Diagram-level
 - [ ] Title states **diagram type and scope** (e.g., "System Context diagram for Internet Banking System").
-- [ ] A **legend/key** explains every shape, colour, border style, line type, arrowhead and icon used. This applies even to UML, because not every reader knows the notation.
+- [ ] A **legend/key** explains every shape, colour, border style, line type, arrowhead and icon that carries meaning. Required whenever the diagram uses any of those conventions (proposed vs existing, async vs sync, external vs in scope, trust boundaries). Optional, and better omitted, when the diagram uses none: uniform boxes, solid arrows, default shapes, no colour. Not every reader knows UML, so a UML diagram that relies on its notation still needs a key.
+- [ ] **5-second test:** a reader from the stated audience can name the diagram's subject, its new parts and the one question it answers in about five seconds. If not, cut or split.
 - [ ] **One abstraction level** per diagram. Never show a microservice and a class on the same canvas.
 - [ ] Stated **status**: current, proposed or future-state. Mark proposed elements visually (e.g., dashed border) and in the legend.
 - [ ] The caption states the **audience and the question** the diagram answers.
@@ -16,7 +17,9 @@ These rules synthesize Simon Brown's C4 review checklist (c4model.com) and the *
 - [ ] **Shapes carry meaning only if the legend says so.** Default: rectangles for everything, cylinders for data stores, person shapes for people.
 
 ## Relationships (lines)
-- [ ] **Every arrow has a label** describing intent with a verb ("publishes OrderPlaced events to", "reads customer profile from"), not "uses".
+- [ ] **Arrows are labelled where the relationship isn't self-evident**, with a verb ("publishes OrderPlaced to", "reads customer profile from"), not "uses". Every arrow that crosses a system or trust boundary, carries async messages or sensitive data, or could be read two ways gets a label; an obvious link between adjacent elements may stay bare. In a sequence diagram the message text is the label.
+- [ ] **Labels are short:** two to five words plus a bracketed protocol tag, on structural diagrams and on sequence-diagram messages alike. No parentheses in a label: "ack" is the message, and "stale write, nothing to do" is the walkthrough's job. Parameter lists ("id 42, updated_at T1, T1 < T2") and SQL fragments are the same problem; name the operation and keep the values for the prose. A label that needs a clause or a second line is detail that belongs in the prose or element catalog.
+- [ ] **The bracket tag is a transport, not an adjective:** [HTTPS/JSON], [gRPC], [AMQP], [Kafka], [SQL], [Redis replication]. Never "[async]" or "[internal]"; those are shown by line style or placement and explained in the legend.
 - [ ] **The label matches the arrow direction.** Read it aloud as a sentence: source → verb → target.
 - [ ] **Protocol or technology** is on inter-process arrows (HTTPS/JSON, gRPC, Kafka topic, SQL).
 - [ ] **One arrow per relationship.** Don't draw a return arrow for request/response; show two only if either side can initiate.

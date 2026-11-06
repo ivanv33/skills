@@ -1,6 +1,6 @@
 # Mermaid starter snippets
 
-Each snippet already carries a title, a legend, typed elements and verb-labelled arrows with protocols. Copy, rename, and delete what you don't need. Mermaid has no native legend, so the legend is a small subgraph (structural diagrams) or a `Note` (sequence diagrams); keep it.
+Each snippet already carries a title, a legend, typed elements and verb-labelled arrows with protocols. Copy, rename, and delete what you don't need. Mermaid has no native legend, so the legend is a small subgraph (structural diagrams) or a `Note` (sequence diagrams). Keep it whenever the diagram uses colour, dashed lines or dashed borders to mean something; drop it from a plain sequence diagram that uses only ordinary request and reply lines.
 
 Syntax gotchas (verified with mermaid-cli 11): sequence-diagram participant aliases cannot contain square brackets, and semicolons inside labels or notes are read as statement separators, so use parentheses and commas there.
 
@@ -71,7 +71,9 @@ flowchart TB
         l1["Existing container"]
         l2["Proposed (new in this design)"]
         l3["External system"]
-        l1 ~~~ l2 ~~~ l3
+        l4[("Data store")]
+        l5[["Queue / topic"]]
+        l1 ~~~ l2 ~~~ l3 ~~~ l4 ~~~ l5
     end
 
     classDef existing fill:#dbe9ff,stroke:#1f4e99,color:#000
@@ -82,7 +84,7 @@ flowchart TB
     class psp,l3 ext
 ```
 
-Legend text should also state: "solid arrow = synchronous call in the direction of the initiator; dashed arrow = asynchronous message."
+Legend text should also state: "solid arrow = synchronous call in the direction of the initiator; dashed arrow = asynchronous message." Every shape the diagram uses (cylinder for data stores, double-bracket for queues) gets a legend entry, as above.
 
 ## Sequence diagram (one scenario, including the failure path)
 
@@ -99,13 +101,12 @@ sequenceDiagram
     Note over W,D: Audience: payments on-call. Question: what happens when the provider times out?<br/>Solid = request, dashed = reply, idempotency key = order_id
     W->>D: mark refund PENDING [SQL]
     W->>P: POST /refunds (Idempotency-Key: order_id) [HTTPS]
-    P--xW: timeout after 5 s
+    P--xW: timeout 5 s
     loop up to 3 retries, exponential backoff
         W->>P: POST /refunds (same Idempotency-Key)
-        P-->>W: 200 refund already processed
+        P-->>W: 200 refund re_123 (replayed)
     end
     W->>D: mark refund COMPLETE
-    W-->>P: (no further calls)
 ```
 
 ## State machine
@@ -145,7 +146,7 @@ flowchart TB
     end
     api1 -->|"reads/writes [SQL]"| db1
     api2 -->|"reads/writes [SQL]"| db1
-    db1 -.->|"replicates to [sync]"| db2
+    db1 -.->|"replicates to [PostgreSQL streaming]"| db2
     api1 -.->|"publishes to"| kafka
     api2 -.->|"publishes to"| kafka
 
