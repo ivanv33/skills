@@ -19,7 +19,7 @@
 1. **Unexplained conventions.** Colours, dashed lines or borders that mean something, with no legend to say what. (A plain diagram with no conventions doesn't need one.)
 2. **Mixed abstraction levels.** Services, classes, servers and teams on one canvas.
 3. **Unlabelled or "uses" arrows where it matters, or labels that are paragraphs.** Boundary-crossing or ambiguous relationships with no intent, direction or protocol; or labels so long the diagram reads like prose.
-4. **The "everything" diagram.** Fifty boxes trying to answer every question at once; split it by question.
+4. **The "everything" diagram.** Fifty boxes trying to answer every question at once. This is the 5-second test failing: a reader can't name the subject, the new parts or the question. Split it by question; don't shrink the font.
 5. **Diagram with no prose.** A picture with no walkthrough, no rationale and no quality attributes.
 6. **Private notation.** Shapes and icons only the author can decode, or vendor icons without labels.
 7. **Author-only maintainability.** A screenshot or proprietary file with no shared editable source.
@@ -29,4 +29,4 @@
 11. **Code-level diagrams drawn by hand.** These rot fastest; generate them from code or skip them.
 
 ## How to give review feedback
-Ask one person from the stated audience to explain the diagram back to you without help; where they stumble is where the diagram fails (V&B rule 7: review documentation for fitness of purpose). Lead with the one or two findings that most hurt that reader, name the checklist item or anti-pattern, and show the corrected source rather than describing the fix in words.
+Start with the 5-second test and say the result plainly: "In five seconds I could tell X but not Y." It is the fastest way to show an author what a reader experiences, and it ranks the findings for you, since whatever blocked the glance is the top item. Then ask one person from the stated audience to explain the diagram back to you without help; where they stumble is where the diagram fails (V&B rule 7: review documentation for fitness of purpose). Lead with the one or two findings that most hurt that reader, name the checklist item or anti-pattern, and show the corrected source rather than describing the fix in words.
