@@ -31,4 +31,4 @@
 - Oct 6–9: alert cleanup done; Oct pages 38 (vs 61 in July, -38%).
 - Oct 20: Risk (Omar) signed off on retry limits; high-risk merchants on retries from Oct 22. Oct failure rate 0.4%.
 - Oct 27: Helena asked me to write the legacy-ledger decommission plan for the whole Platform org (3 teams), due end of Nov.
-- Oct 28: Sofia's team copied the weekly SEV review for Identity group.
+- Oct 28: Raj (Identity group lead) copied the weekly SEV review for the Identity group.

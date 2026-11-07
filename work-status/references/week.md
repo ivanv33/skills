@@ -22,17 +22,17 @@ Start with a bold title line: **Week of <Monday, Month D, YYYY>**. Then, each wi
 
 ## Example
 
-**Week of September 21, 2026**
+**Week of March 9, 2026**
 
 **Key accomplishments**
-- Ledger v2: landed the double-write cutover for payouts; 100% of new payouts now write to both ledgers with zero reconciliation diffs after 3 days.
-- Payout retries: merged the retry-policy config PR; ops can now change backoff without a deploy.
-- On-call: closed the SEV-3 from Tuesday (stale cache on refund status) and added a regression test.
+- Query rewriting: shipped the synonym expansion service to 100% of EU traffic; zero-result searches down from 4.1% to 2.6% on the week.
+- Index freshness: landed the incremental indexer PR; product updates now show in search within 5 minutes instead of the hourly batch.
+- Relevance evals: finished the labelled set for furniture queries (1,200 pairs) with the catalogue team.
 
 **Decisions**
-- Ledger v2: we will keep double-writing for two more weeks before flipping reads, to get a full billing cycle of diffs.
+- Query rewriting: we will not expand brand names, after two false-positive escalations from merchants; keeping an allowlist instead.
 
 **Still open**
-- Waiting on Risk for sign-off on the retry limits before enabling retries for high-risk merchants.
-- Ledger v2 read cutover carries into next week; Priya is reviewing the runbook.
-- Light week otherwise: two days out for the offsite.
+- Waiting on Infra for the extra Elasticsearch capacity before rolling the incremental indexer to US.
+- Furniture relevance experiment carries into next week; need Lena's review of the metric definition.
+- Light week otherwise: out Monday.

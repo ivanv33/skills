@@ -33,17 +33,17 @@ Bold title line: **Q<N> YYYY review — <Aye's role>** (use the fiscal quarter l
 
 ## Example excerpt
 
-**Q3 2026 review — Senior Engineer, Payments Platform**
+**Q1 2026 review — Senior Engineer, Search Platform**
 
 **Summary**
-I led the Ledger v2 write migration to completion and cut payout failures by two thirds, which together remove the two biggest sources of finance reconciliation work and on-call load on the team. I also took over on-call process ownership for the platform group.
+I led the zero-result reduction programme to its target a month early and made search index freshness a five-minute guarantee in two of three regions, which together removed the two most common merchant complaints about search. I also set up the offline relevance evaluation pipeline the ranking team now uses for every experiment.
 
 **Goals and results**
-- *Migrate all Ledger v2 writes* — done. Payouts and refunds double-write with zero reconciliation diffs over a full billing cycle; the read cutover is scheduled for October 14. Finance estimates this removes about 6 hours a week of manual reconciliation. (verify estimate)
-- *Payout failure rate under 0.5%* — partially done: 1.4% in July to 0.6% in September. Configurable retries and the refund-cache fix account for most of the drop; the remaining failures are a bank-side issue now tracked with the Risk team.
-- *On-call load down 30%* — missed: pages are down 22%. The alert cleanup slipped because I prioritised the migration; it is the first item in October.
+- *Zero-result rate under 2.5%* — done: 4.1% in January to 2.2% in March. Synonym expansion, which I designed and shipped, accounts for most of the drop; the growth team attributes roughly 0.3% of search-led orders to it. (verify attribution)
+- *Index freshness under 10 minutes in all regions* — partially done: EU and US at 5 minutes, APAC still hourly. The APAC rollout is blocked on an Infra capacity request I opened on March 12; it should have gone in during February.
+- *Offline relevance evals for the top 3 categories* — missed: one of three. I underestimated labelling effort and moved the remaining sets to a vendor in late March; apparel lands in April.
 
 **Scope, leadership and collaboration**
-- Led the migration across Payments, Finance Engineering and SRE; wrote the cutover runbook that SRE now uses as the template for their own migrations.
-- Ran the on-call retro and introduced a weekly SEV review for the platform group; both September SEV-3s had fixes merged within a day.
-- Mentored Dana through her first production launch (retry-policy config), including the design review and rollout plan.
+- Led the synonym programme across Search, Catalogue and Growth; handed the dictionary tooling to Catalogue so it runs without me.
+- Built the offline eval pipeline the ranking team now gates experiments on; two experiments were stopped before A/B on its score.
+- Mentored Omar through his first production launch (the incremental indexer), including the rollout plan and the on-call handover.

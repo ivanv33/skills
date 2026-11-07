@@ -30,24 +30,24 @@ Bold title line: **<Month YYYY> update**. Then, each with a short bold header:
 
 ## Example
 
-**September 2026 update**
+**March 2026 update**
 
 **Highlights**
-- Ledger v2 migration: payouts now double-write to both ledgers with zero reconciliation diffs across a full billing cycle, which clears the last blocker for the read cutover.
-  - Double-write for payouts landed on the 24th; refunds followed on the 29th.
-  - Cutover runbook reviewed by Priya and the SRE on-call.
-- Payout reliability: cut failed-payout tickets from 31 in August to 9 in September by shipping configurable retries and fixing the stale refund-status cache. (verify the August count)
-- Team: ran the on-call retro and introduced a weekly 30-minute SEV review; the two September SEV-3s both had fixes merged within a day.
+- Zero-result searches: down from 4.1% to 2.2% across all regions after synonym expansion reached 100%, which the growth team estimates is worth about 0.3% of search-led orders. (verify estimate)
+  - Brand-name expansion excluded after merchant escalations; allowlist in place.
+  - Catalogue team now owns the synonym dictionary; I handed over the tooling on the 20th.
+- Index freshness: product changes appear in search within 5 minutes in EU and US, down from an hourly batch; merchant complaints about stale prices fell from 19 in February to 3.
+- Relevance evals: a labelled furniture set (1,200 query/product pairs) is live in the eval pipeline, so ranking experiments in that category now have an offline score before an A/B test.
 
 **Against goals**
-- Q3 goal "Ledger v2 writes migrated": done.
-- Q3 goal "payout failure rate under 0.5%": on track, 0.6% as of the 30th.
-- Q3 goal "on-call load down 30%": at risk; pages are down but the alert cleanup slipped to October.
+- Q1 goal "zero-result rate under 2.5%": done.
+- Q1 goal "index freshness under 10 minutes in all regions": on track, APAC still on the hourly batch pending Infra capacity.
+- Q1 goal "offline relevance evals for the top 3 categories": at risk; furniture done, apparel and electronics slipped to April.
 
 **Decisions and changes of direction**
-- Kept double-writing two extra weeks before flipping reads, to get a full billing cycle of diffs.
-- Dropped the custom retry scheduler in favour of config-driven backoff; the scheduler would have taken another month for no measurable gain.
+- Excluded brand names from synonym expansion; precision mattered more than the small recall gain.
+- Moved the eval sets after furniture to a shared labelling vendor instead of the catalogue team, who cannot staff it in April.
 
 **Risks and next month**
-- Read cutover depends on Risk signing off on retry limits for high-risk merchants; waiting since the 22nd.
-- October: flip Ledger v2 reads, finish alert cleanup, write the Q4 plan for deprecating the old ledger.
+- APAC freshness depends on Infra's Elasticsearch capacity request, open since the 12th.
+- April: APAC incremental indexer, apparel eval set, start the ranking experiment on furniture.

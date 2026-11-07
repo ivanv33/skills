@@ -7,27 +7,27 @@ Status updates at month level and above are judged on impact, and the people rea
 Every impact bullet answers four things, usually in this order:
 
 1. **What I did** — the action, with Aye as the subject. "I led", "I shipped", "I redesigned", "I negotiated".
-2. **What changed** — the outcome in the world, not the artefact. Not "merged the retry PR" but "payouts now retry automatically".
+2. **What changed** — the outcome in the world, not the artefact. Not "merged the synonym PR" but "searches now expand synonyms automatically".
 3. **By how much** — the number: before and after, a percentage, a count, a time, money. One number per bullet is usually enough; two is the maximum.
 4. **Why it mattered** — the business or team consequence, in a few words: cost, revenue, risk, customer experience, someone's time, a dependency unblocked.
 
-Example: "I shipped configurable payout retries, cutting failed payouts from 1.4% to 0.6% in a quarter and removing the single largest source of finance support tickets."
+Example: "I shipped synonym expansion, cutting zero-result searches from 4.1% to 2.2% in a quarter and removing the most common merchant complaint about search."
 
-If you have the first two but not the number, write the bullet anyway and mark the gap: "cut failed payouts noticeably (verify: get the before/after rate)". A visible gap is useful to Aye; a vague bullet is not.
+If you have the first two but not the number, write the bullet anyway and mark the gap: "cut zero-result searches noticeably (verify: get the before/after rate)". A visible gap is useful to Aye; a vague bullet is not.
 
 ## Activity to outcome
 
 Translate as you write. A short ladder:
 
 - "Worked on X" → "Shipped X" → "Shipped X, which now does Y" → "Shipped X, which now does Y, cutting Z by N%".
-- "Attended the design review" → nothing, unless Aye changed the design: "Caught the double-charge edge case in the refunds design review; the fix went in before launch."
-- "Reviewed 23 PRs" → "Reviewed every migration PR (23), which is why the cutover shipped with no post-launch fixes."
-- "Helped Dana" → "Mentored Dana through her first production launch; she now owns the retry service."
+- "Attended the design review" → nothing, unless Aye changed the design: "Caught the brand-name false positives in the synonym design review; the allowlist went in before launch."
+- "Reviewed 23 PRs" → "Reviewed every indexer PR (23), which is why the freshness rollout shipped with no post-launch fixes."
+- "Helped Omar" → "Mentored Omar through his first production launch; he now owns the indexing service."
 
 ## Credit, precisely
 
 - Use "I led" only for things Aye drove end to end or was the accountable owner of. Use "I built", "I designed", "I shipped" for things Aye did. Use "with <name or team>" for shared work and name who owned the rest.
-- Precise credit is more persuasive than broad credit. "I led the migration across three teams; SRE owned the rollout" is believable. "I delivered the migration" with no mention of the three other people reads as a claim the reader will check.
+- Precise credit is more persuasive than broad credit. "I led the freshness rollout across three teams; Infra owned the capacity work" is believable. "I delivered the freshness rollout" with no mention of the other teams reads as a claim the reader will check.
 - Never promote your own suggestions into Aye's decisions. If Aye adopted a suggestion you made, Aye decided; if not, it did not happen.
 
 ## Numbers you can use
@@ -52,7 +52,7 @@ Performance and promotion rubrics tend to grade these, so make them visible when
 - **Judgment:** calls that avoided cost or risk, including the call to stop or cut scope.
 - **Ownership under pressure:** incidents led, launches run, deadlines held or renegotiated early.
 
-Use the plain version of the term ("I set the direction for", "SRE adopted it as their template") rather than the rubric word ("demonstrated multiplier impact"). The reader maps it to the rubric themselves and trusts the plain version more.
+Use the plain version of the term ("I set the direction for", "the Ads team adopted the pipeline") rather than the rubric word ("demonstrated multiplier impact"). The reader maps it to the rubric themselves and trusts the plain version more.
 
 ## Misses
 

@@ -32,18 +32,18 @@ Bold title line: **YYYY in review — <Aye's role>** (or **YYYY self-review**, i
 
 ## Example excerpt
 
-**2026 in review — Senior Engineer, Payments Platform**
+**2026 in review — Senior Engineer, Search Platform**
 
 **The year in three sentences**
-I took Ledger v2 from a design doc to the system of record for all payout and refund writes, and cut payout failures from 2.1% to 0.4% along the way. Together those removed roughly a day a week of finance reconciliation and about a third of the team's on-call pages. By Q3 I owned the platform group's on-call process and the migration across three teams, up from owning a single service in January.
+I took search from a system with a 4% zero-result rate and hourly index updates to one with a 1.8% zero-result rate and five-minute freshness in every region, and built the evaluation pipeline that every ranking change now has to pass. Together those are credited with about 0.5% of search-led orders and ended stale-price complaints as a support category. By Q3 I owned relevance quality for the whole marketplace, up from owning the query-rewriting service in January.
 
 **Storylines**
 
-**Ledger v2 became the system of record.** In January it was a design doc with no owner. I took it on, split it into write migration and read cutover, and drove it across Payments, Finance Engineering and SRE. All writes migrated by September with zero reconciliation diffs over a full billing cycle; reads cut over in October with no customer-visible incident. Finance has stopped its weekly manual reconciliation. (verify: finance confirmed in Nov)
+**Search stopped returning nothing.** In January 4.1% of searches returned no results. I designed synonym expansion, shipped it region by region with a brand-name allowlist after merchant escalations, and handed the dictionary to the Catalogue team. Zero-result rate was 2.2% by March and 1.8% by October; Growth attributes about 0.3% of search-led orders to it. (verify: Growth's Q3 attribution memo)
 
-**Payout failures stopped being an on-call problem.** 2.1% failure rate in Q1, 0.4% in Q4. Configurable retries, the refund-cache fix, and the bank-side retry agreement with Risk account for the drop. Failed-payout tickets fell from about 40 a month to under 10.
+**Ranking changes got a gate.** There was no offline evaluation; every change went straight to A/B. I built the eval pipeline and the first labelled sets, then moved labelling to a vendor when the Catalogue team could not staff it. Every ranking experiment since May has run through it; four were stopped before A/B on its score, saving roughly a month of test traffic each.
 
 **Operating level**
-- Led a three-team migration end to end, including the cutover runbook SRE adopted as their template.
-- Owned on-call process for the platform group from Q3; introduced the weekly SEV review, which two other groups have since copied.
-- Mentored Dana through her first production launch and design review; she now owns the retry service.
+- Owned relevance quality for the marketplace from Q3, a cross-team remit covering Search, Catalogue and Growth.
+- Set the standard that ranking changes need an offline score before A/B; the Ads team adopted the same pipeline in Q4.
+- Mentored Omar from his first launch to owning the indexing service.
