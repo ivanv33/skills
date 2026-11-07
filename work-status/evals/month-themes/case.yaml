@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: month-themes
+expected_outcome: |
+  A monthly update (under ~350 words) organised by theme rather than by event: Ledger v2 payouts double-write at 100% with 0 diffs, payout reliability (0.6% failure rate, 9 tickets vs 31 in August), on-call (47 pages vs 61 in July, alert cleanup slipped). It reports status against the three Q3 goals (writes migrated: done; failure rate <0.5%: not met at 0.6%; pages -30%: missed at -23%), lists the decision to delay the read cutover to Oct 14, names the open Risk sign-off as a dependency, drops personal items and individual PR-level noise, and ends with a Sources line.
+context:
+  scaffold_script: place-files.sh

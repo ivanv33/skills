@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: quarter-perf-impact
+expected_outcome: |
+  A quarterly review (under ~500 words) written as performance-review evidence: a summary, goals vs results for the three Q3 goals with honest statuses and numbers (writes migrated: done; failure rate 1.4% -> 0.6% vs 0.5% target; pages 61 -> 47, -23% vs -30% target with the reason), quantified impact (finance ~6h/week reconciliation marked as an estimate, tickets 44 -> 9), a scope/leadership section naming the cross-team migration, the SEV review adopted by the group, the SEV-2 incident command and CI fix, and mentoring Dana (who built retry backoff and now owns the retry service), a learned/misses line, and next-quarter outcomes. No personal items; ends with a Sources line.
+context:
+  scaffold_script: place-files.sh
