@@ -11,7 +11,8 @@
 1. Start from the quarter's monthly updates if they exist, then the goals in memory. For each goal, find the result and the number.
 2. Make a list of candidate impact statements using the pattern in `impact.md` (what I did, what changed, by how much, why it mattered). Keep the 4 to 6 strongest. Everything else is either a supporting bullet or cut.
 3. Separately list evidence of *how* Aye worked: things that show scope and level rather than output. Leading a project across teams, unblocking others, mentoring, setting a standard others adopted, running an incident, making a call that saved time. Perf processes grade on these explicitly, and they are the items most likely to be forgotten.
-4. Be honest about misses. A goal that slipped, stated with the reason and what Aye did about it, reads as judgment; a goal that silently disappears reads as evasion when the manager remembers it.
+4. Keep each goal block at quarter altitude. It is a claim and its proof, not the story of how the work was done: the load test, who reviewed what, the date each piece landed, and PR numbers belong in the monthly updates. If a bullet does not change whether the reader believes the result, cut it. This is also how the budget is met; a quarter that runs long has almost always leaked month-level narrative into the goal blocks.
+5. Be honest about misses. A goal that slipped, stated with the reason and what Aye did about it, reads as judgment; a goal that silently disappears reads as evasion when the manager remembers it.
 
 ## Structure
 
