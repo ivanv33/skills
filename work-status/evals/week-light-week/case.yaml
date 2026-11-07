@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: week-light-week
+expected_outcome: |
+  A short (under ~250 words) first-person weekly update titled 'Week of September 21, 2026' with Key accomplishments, Decisions and Still open sections, covering only Sept 21-27 items: cutover runbook, SEV-3 refund-status fix (PR #4330), Dana's retry config PR, the decision to keep double-writing two more weeks (cutover Oct 7 -> Oct 14), and the open Risk sign-off (PAY-915). It omits personal items (running shoes) and July/August/September-other-week items, notes the two offsite days or that the week was light, and ends with a Sources line after a --- divider.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: year-self-review
+expected_outcome: |
+  A year-level self-review (under ~800 words) structured as a narrative with 3-5 storylines told as before/after with numbers (Ledger v2 from design doc in Jan to system of record after the Oct 14 read cutover and finance stopping manual reconciliation; payout failure rate 2.1% -> 0.4%; on-call pages 61 -> 38 and SEV review copied by other groups), an explicit operating-level section (tech lead of a cross-team migration, on-call process ownership, Helena asking Aye to write the org-wide decommission plan, mentoring Dana to owning a service), honest growth/misses (Q1 slip, Q2 refunds not started, Q3 on-call target missed), and next-year scope. It does not list quarters as sections, contains no personal items, and ends with a Sources line.
+context:
+  scaffold_script: place-files.sh
