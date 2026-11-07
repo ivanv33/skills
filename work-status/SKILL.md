@@ -37,13 +37,14 @@ Read the reference for the chosen cadence before writing; it holds the structure
 
 ## Step 1 — Establish the window
 
-Get the current date and time from a tool or the system; never guess it. Then run:
+Get the current date and time from a tool or the system; never guess it. Timezone is America/New_York unless memory says otherwise. Then work out the period that contains `DATE` (or today):
 
-```bash
-python3 $SKILL_DIR/scripts/window.py <cadence> [DATE]
-```
+- **week**: Monday 00:00 through Sunday 23:59. Title: "Week of <Monday, Month D, YYYY>".
+- **month**: the 1st through the last day of the month. Title: "<Month YYYY>".
+- **quarter**: calendar quarters (Jan–Mar, Apr–Jun, Jul–Sep, Oct–Dec). Title: "Q<N> YYYY". If memory records that Aye's company uses a fiscal calendar, use its quarters and label them "Q<N> FY<year the fiscal year ends in>".
+- **year**: January 1 through December 31, or the fiscal year if memory records one. Title: "YYYY" or "FY<year>".
 
-(`$SKILL_DIR` is the directory holding this SKILL.md.) It prints the start, the end, and the title to use. Weeks run Monday 00:00 to Sunday 23:59; months, quarters and years are calendar periods. If the period contains today, the window ends right now. Timezone is America/New_York unless memory says otherwise. If Aye's company uses a fiscal calendar and memory records it, pass `--fiscal-start-month`.
+If the period contains today, the window ends right now rather than at the period's end, and the update says so where it matters (for example "as of November 7").
 
 ## Step 2 — Gather what Aye did
 

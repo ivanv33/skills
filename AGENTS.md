@@ -9,7 +9,6 @@ gmail/                     → Gmail interaction skill
 karpathy-guidelines/       → LLM coding guidelines skill
 setup-project-for-agent/   → Project onboarding skill
 work-status/               → Weekly/monthly/quarterly/yearly work status and perf-review skill
-work-status/               → Weekly/monthly/quarterly/yearly work status and perf-review skill
 ```
 
 ## Skills
@@ -21,7 +20,6 @@ work-status/               → Weekly/monthly/quarterly/yearly work status and p
 | `gmail` | Read, search, send, and reply to Gmail messages using the Gmail API and Application Default Credentials. Use when the user asks about email, inbox, unread messages, or wants to send/reply to someone |
 | `karpathy-guidelines` | Behavioral guidelines to reduce common LLM coding mistakes. Use when writing, reviewing, or refactoring code to avoid overcomplication, make surgical changes, surface assumptions, and define verifiable success criteria |
 | `setup-project-for-agent` | Set up a local project's directory structure for AI agent use — AGENTS.md, skill symlinks, and Claude Code integration. Use when onboarding a new project or standardizing an existing one for AI agent workflows |
-| `work-status` | Write a work status update at week, month, quarter or year cadence from memory, past conversations and connected apps; the longer the window, the higher the altitude and the stronger the self-advocacy, with quarter and year updates written as performance-review and promo evidence |
 | `work-status` | Write a work status update at week, month, quarter or year cadence from memory, past conversations and connected apps; the longer the window, the higher the altitude and the stronger the self-advocacy, with quarter and year updates written as performance-review and promo evidence |
 
 ## Skill Design
